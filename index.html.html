@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>عيد ميلاد سعيد  queen</title>
+<style>
+    /* إعدادات الجسم */
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #7c384e, #8d8486 ); /* خلفية وردية فاتحة ناعمة */
+      overflow: hidden;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      height: 100vh;
+    }
+
+    /* عنوان الموقع */
+    h1 {
+      margin-top: 60px;
+      text-align: center;
+      font-size: 48px;
+      color: #ff69b4;
+      z-index: 10;
+      position: relative;
+      text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.5);
+    }
+
+    /* إعداد البالونات */
+    .balloon {
+      position: absolute;
+      bottom: -150px;
+      width: 60px;
+      height: 80px;
+      background-color: currentColor;
+      border-radius: 50% 50% 45% 45%;
+      box-shadow: inset -8px -12px 0 rgba(255, 255, 255, 0.3);
+      animation: floatUp 5s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    /* الخيط */
+    .balloon::after {
+      content: "";
+      position: absolute;
+      top: 80px;
+      left: 50%;
+      width: 2px;
+      height: 35px;
+      background: #aaa;
+      transform: translateX(-50%);
+    }
+
+    /* حركة البالونات */
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-120vh);
+        opacity: 0;
+      }
+    }
+
+    /* إعداد مجموعة نصوص sorry */
+    .sorry-group {
+      position: fixed;
+      top: 10px;
+      font-size: 9px;
+      font-family: 'Courier New', monospace;
+      color: #888;
+      opacity: 0.5;
+      user-select: none;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px; /* المسافة بين النصوص */
+      z-index: 5;
+    }
+
+    /* النصوص على اليسار */
+    .sorry-left {
+      left: 8px;
+      align-items: flex-start;
+    }
+
+    /* النصوص على اليمين */
+    .sorry-right {
+      right: 8px;
+      align-items: flex-end;
+    }
+    .heart-frame {
+  width: 200px;
+  height: 180px;
+  position: relative;
+  clip-path: path("M 100 30 C 90 -10, 0 -10, 0 60 C 0 110, 100 170, 100 180 C 100 170, 200 110, 200 60 C 200 -10, 110 -10, 100 30 Z");
+  overflow: hidden;
+  margin: 20px auto;
+}
+
+
+  </style>
+</head>
+<body>
+
+  <!-- العنوان -->
+  <h1> Happy Birthday 🎉</h1>
+
+
+  <!-- البالونات -->
+  <script>
+    const colors = ['#FFB6C1', '#87CEFA', '#FFFFFF']; // وردي، أزرق، أبيض
+    const balloonCount = 20;
+
+    for (let i = 0; i < balloonCount; i++) {
+      const balloon = document.createElement('div');
+      balloon.className = 'balloon';
+
+      // مكان البالونة بشكل عشوائي
+      balloon.style.left = Math.random() * 100 + 'vw';
+
+      // لون البالونة
+      balloon.style.color = colors[Math.floor(Math.random() * colors.length)];
+
+      // مدة الحركة
+      balloon.style.animationDuration = (Math.random() * 2 + 3) + 's';
+
+      // تأخير بسيط لكل بالونة عشان تطلع بشكل متدرج
+      balloon.style.animationDelay = (Math.random() * 2) + 's';
+
+      document.body.appendChild(balloon);
+    }
+  </script>
+<!-- باقي محتوى الصفحة -->
+
+<!-- مشغل الأغاني -->
+<div id="music-player" style="
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(53, 45, 45, 0.7);
+  padding: 10px 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  z-index: 1000;
+  width: 320px;
+">
+  <h3 style="margin: 0 0 8px 0;"></h3>
+  <audio id="player" controls style="width: 100%; border-radius: 6px;">
+    <source id="audioSource" src="" type="audio/mpeg">
+    المتصفح لا يدعم تشغيل الصوت.
+  </audio>
+  <select id="songSelect" style="
+    margin-top: 8px;
+    width: 100%;
+    padding: 6px;
+    border-radius: 6px;
+    border: none;
+    font-size: 14px;
+  ">
+    <option value="">choose</option>
+    <option value="songs/song1.mp3.mp3">Birthday 1</option>
+    <option value="songs/feroz.mp3">Birthday  2</option>
+
+  </select>
+</div>
+
+<script>
+  const player = document.getElementById('player');
+  const audioSource = document.getElementById('audioSource');
+  const songSelect = document.getElementById('songSelect');
+
+  songSelect.addEventListener('change', () => {
+    const selectedSong = songSelect.value;
+    if (selectedSong) {
+      audioSource.src = selectedSong;
+      player.load();
+      player.play();
+    } else {
+      player.pause();
+      audioSource.src = "";
+      player.load();
+    }
+  });
+</script>
+<div class="heart-gallery">
+  <div class="heart-frame"><img src="pecs/pink.webp" alt="صورة 2"></div>
+  <div class="heart-frame"><img src="pecs/pink.webp" alt="صورة 2"></div>
+ <div class="heart-frame"><img src="pecs/pink.webp" alt="صورة 2"></div>
+  <div class="heart-frame"><img src="image4.jpg" alt="صورة 4"></div>
+</div>
+</body>
+</html>
